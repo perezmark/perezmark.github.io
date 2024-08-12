@@ -58,7 +58,103 @@
                 </ul>
 
             <h4>Skillset</h4>
-            <ul>
+            <ul>---
+			import Layout from '../layouts/Layout.astro';
+			---
+			
+			<Layout title="Mark Perez">
+			  <main>
+				<section class="profile">
+				  <div class="profile-image">
+					<img src="../images/mark.jpg" alt="Mark Perez" />
+				  </div>
+				  <div class="profile-info">
+					<h2>Mark Perez</h2>
+					<h3>Astro Enthusiast</h3>
+					<p>
+					  A brief introduction about your passion for astronomy and what you do.
+					  You can talk about your skills, interests, and what you're working on.
+					</p>
+				  </div>
+				</section>
+			
+				<section class="certifications">
+				  <h2>Certifications</h2>
+				  <ul>
+					<li>
+					  <img src="../images/certification1.jpg" alt="Certification 1" />
+					</li>
+					<li>
+					  <img src="../images/certification2.jpg" alt="Certification 2" />
+					</li>
+				  </ul>
+				</section>
+			
+				<section class="projects">
+				  <h2>My Projects</h2>
+				  <p>Add your project details here.</p>
+				</section>
+			  </main>
+			</Layout>
+			
+			<style>
+			  main {
+				margin: auto;
+				padding: 1rem;
+				width: 800px;
+				max-width: calc(100% - 2rem);
+				color: white;
+				font-size: 20px;
+				line-height: 1.6;
+			  }
+			
+			  /* Profile Section */
+			  .profile {
+				display: flex;
+				align-items: center;
+				margin-bottom: 3rem;
+			  }
+			
+			  .profile-image {
+				width: 200px;
+				height: 200px;
+				margin-right: 3rem;
+			  }
+			
+			  .profile-image img {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+			  }
+			
+			  .profile-info {
+				flex-grow: 1;
+			  }
+			
+			  /* Certifications Section */
+			  .certifications ul {
+				list-style: none;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+			  }
+			
+			  .certifications li {
+				width: 150px;
+			  }
+			
+			  .certifications img {
+				width: 100%;
+				height: auto;
+			  }
+			
+			  /* Projects Section */
+			  .projects {
+				margin-top: 3rem;
+			  }
+			</style>
+			
                 <li>Kubernetes</li>
                 <li>Cloud</li>
                 <li>LLM</li>
