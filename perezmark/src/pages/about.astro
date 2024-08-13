@@ -1,6 +1,6 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-const targetDate = new Date('2024-12-31'); 
+const targetDate = new Date('2024-12-31T00:00:00'); // Ensure the time is also specified
 ---
 
 <MainLayout
@@ -33,7 +33,7 @@ const targetDate = new Date('2024-12-31');
     </div>
 
     <script is:inline>
-      const targetDate = new Date(targetDate.toISOString()); 
+      const targetDate = new Date('2024-12-31T00:00:00'); // Correctly set the target date
 
       function updateCountdown() {
         const currentDate = new Date();

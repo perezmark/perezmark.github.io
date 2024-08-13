@@ -5,9 +5,7 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 <header class="lg:flex p-5 gap-5">
     <Astronav>
     <div class="flex w-full justify-between">
-        <a href="/">
-            <img src="/images/logos/mp.jpeg" alt="Mark Perez Logo" class="h-8"> {/* Adjust height as needed */}
-        </a>
+        <a href="/">MarkPerez</a>
         <div class="block lg:hidden"><MenuIcon class="w-4 h-4 text-white" /></div>
     </div>
     <MenuItems class="hidden lg:flex">
