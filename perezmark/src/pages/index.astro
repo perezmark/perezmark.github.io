@@ -1,13 +1,34 @@
 ---
-import MaintLayout from "../layouts/MaintLayout.astro"
-const name = "Mark";
+import MainLayout from "../layouts/MainLayout.astro";
+const name = "mark";
 ---
 
-
-<MaintLayout
-	title="Mark Perez Portfolio"
-	seoTitle="Mark Perez, DevOps Engineer Portfolio"
-	seoDesc="DevOps Engineer"
+<MainLayout
+	title="Mark Perez Portfolio Site"
+	seoTitle="Mark Perezs, DevOps Engineer Portfolio"
+	seoDesc="DevOps Engineer who expertise in Cloud(AWS), Kubernetes, IaC, Automation, Platform Engineering"
 >
-	INDEX PAGEs
-</MaintLayout>s
+	<div class="w-8/12 md:w-6/12 mx-auto">
+    <h1
+		class="text-5xl md:text-6xl text-center drop-shadow-[0px_35px_35px_rgba(39,245,131,0.6)]"
+    >
+    Hey 👋, I am Mark Perez
+    </h1>
+    <div id="typed-strings">
+        <p>I am a <strong>DevOps Engineer</strong></p>
+		<p>I <em>work</em> with Cloud(AWS), Kubernetes, IaC, Automation, Platform Engineering.</p>
+    </div>
+
+    <div class="text-center mt-6"><span id="typed"></span></div>
+	</div>
+</MainLayout>
+
+<script>
+	import Typed from "typed.js";
+
+	var typed = new Typed("#typed", {
+    stringsElement: "#typed-strings",
+    typeSpeed: 50,
+    loop: true,
+	});
+</script>
