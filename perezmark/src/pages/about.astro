@@ -1,33 +1,57 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+const targetDate = new Date('2024-12-31'); // Set your target launch date here
 ---
 
 <MainLayout
-  title="Mark Perez's About"
-  seoTitle="About Mark Perez, DevOps Engineer"
+  title="Mark Perez's About" 
+  seoTitle="About Mark Perez, DevOps Engineer" 
   seoDesc="Hi there! My name is Mark Perez, and I'm a DevOps engineer with over 5 years of experience. I'm passionate about building and automating efficient, scalable, and reliable software delivery pipelines."
 >
-  <div class="w-6/12 mx-auto py-8"> {/* Added padding for better spacing */}
-    <h1 class="text-5xl font-bold mb-4">About</h1> {/* Enhanced heading */}
-    <div class="relative"> {/* Container for image and shadow */}
-      <img
-        src="/public/images/about.jpg"
-        alt="Mark Perez"
-        class="my-2 rounded-lg shadow-lg drop-shadow-[10px_10px_35px_rgba(39,245,131,0.6)]"
-      />
-      {/* You can add a caption or overlay elements here if desired */}
+  <div class="flex flex-col items-center justify-center min-h-screen">
+    <h1 class="text-4xl font-bold mb-4 text-center text-white">Under Construction</h1> 
+    <p class="text-lg text-gray-300 mb-8 text-center">This page is currently being built. We're launching soon!</p> 
+
+    {/* Countdown Timer */}
+    <div class="flex space-x-4 text-4xl font-bold text-gray-200"> 
+      <div id="days" class="flex flex-col items-center">
+        <span>00</span>
+        <span class="text-sm text-gray-400">Days</span> 
+      </div>
+      <div id="hours" class="flex flex-col items-center">
+        <span>00</span>
+        <span class="text-sm text-gray-400">Hours</span> 
+      </div>
+      <div id="minutes" class="flex flex-col items-center">
+        <span>00</span>
+        <span class="text-sm text-gray-400">Minutes</span> 
+      </div>
+      <div id="seconds" class="flex flex-col items-center">
+        <span>00</span>
+        <span class="text-sm text-gray-400">Seconds</span> 
+      </div>
     </div>
-    <p class="mt-6 text-lg leading-relaxed">
-      Hi there! I'm Mark Perez, a DevOps engineer with a passion for streamlining software delivery and infrastructure management. With over 5 years of experience, I thrive on building and automating efficient, scalable, and reliable systems. 
-    </p>
-    <p class="mt-4 text-lg leading-relaxed">
-      My expertise lies in designing and implementing CI/CD pipelines, containerization with Docker and Kubernetes, cloud infrastructure provisioning (AWS, Azure, GCP), and configuration management using tools like Ansible and Terraform. 
-    </p>
-    <p class="mt-4 text-lg leading-relaxed">
-      I'm a strong believer in collaboration and clear communication, always seeking ways to bridge the gap between development, operations, and other stakeholders. I enjoy tackling complex challenges and finding innovative solutions to improve software delivery processes.
-    </p>
-    <p class="mt-4 text-lg leading-relaxed">
-      Outside of work, I enjoy exploring nature through hiking and expressing my creativity through playing guitar. I'm always eager to connect with fellow tech enthusiasts and collaborate on exciting projects. Feel free to reach out!
-    </p>
   </div>
+
+  <script is:inline>
+    const targetDate = new Date({targetDate});
+
+    function updateCountdown() {
+      const currentDate = new Date();
+      const timeRemaining = targetDate - currentDate;
+
+      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+      document.getElementById('days').querySelector('span:first-child').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').querySelector('span:first-child').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').querySelector('span:first-child').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').querySelector('span:first-child').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </MainLayout>
