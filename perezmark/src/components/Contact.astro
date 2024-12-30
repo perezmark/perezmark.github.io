@@ -2,7 +2,9 @@
 ---
 
 <section class="contact" id="contact">
-  <h2 class="heading">Let's <span>Connect</span></h2>
+  <div class="heading-container">
+    <h2 class="heading">Let's <span>Connect</span></h2>
+  </div>
   <p class="subtitle">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
   
   <div class="contact-container">
@@ -34,8 +36,13 @@
     padding: 6rem 10%;
   }
 
-  .heading {
+  .heading-container {
+    width: 100%;
     text-align: center;
+  }
+
+  .heading {
+    display: inline-block;
     font-family: 'Orbitron', sans-serif;
     font-size: 3.5rem;
     margin-bottom: 1rem;
