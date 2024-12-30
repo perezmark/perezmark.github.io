@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectDiagram from '../../components/ProjectDiagram.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+---
+
+<Layout title="Bitbucket CI/CD Pipeline - Mark Lester Perez">
+  <main class="project-page">
+    <ProjectHeader />
+    <h1>Bitbucket CI/CD Pipeline</h1>
+    
+    <section class="overview">
+      <h2>Project Overview</h2>
+      <p>
+        Implementation of a streamlined CI/CD pipeline using Bitbucket Pipelines for
+        automating Spring Boot application deployment to AWS ECS.
+      </p>
+    </section>
+
+    <section class="prerequisites">
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Bitbucket repository configured</li>
+        <li>AWS credentials in repository variables</li>
+        <li>ECR repository created</li>
+        <li>ECS cluster and service setup</li>
+        <li>Spring Boot application with Dockerfile</li>
+      </ul>
+    </section>
+
+    <section class="implementation">
+      <h2>Pipeline Steps</h2>
+      
+      <h3>1. Build Application</h3>
+      <ul>
+        <li>Configure Java environment</li>
+        <li>Cache dependencies</li>
+        <li>Build with Maven/Gradle</li>
+        <li>Run tests and coverage</li>
+        <li>Store test artifacts</li>
+      </ul>
+
+      <h3>2. Build and Push Docker Image</h3>
+      <ul>
+        <li>Configure Docker pipe</li>
+        <li>Run security scans</li>
+        <li>Authenticate with ECR</li>
+        <li>Build and tag image</li>
+        <li>Push to registry</li>
+        <li>Send scan results to Slack/Teams</li>
+      </ul>
+
+      <h3>3. Deploy to ECS</h3>
+      <ul>
+        <li>Update ECS service</li>
+        <li>Monitor deployment</li>
+        <li>Validate health checks</li>
+        <li>Handle rollbacks</li>
+        <li>Notify deployment status</li>
+      </ul>
+    </section>
+
+    <section class="architecture">
+      <h2>Architecture Diagram</h2>
+      <ProjectDiagram type="bitbucket" />
+    </section>
+
+    <section class="features">
+      <h2>Pipeline Features</h2>
+      <ul>
+        <li>Parallel test execution</li>
+        <li>Branch-specific deployments</li>
+        <li>Custom deployment environments</li>
+        <li>Automated rollbacks</li>
+        <li>Deployment notifications</li>
+        <li>Real-time Slack/Teams alerts for security findings</li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .project-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: var(--heading);
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    color: var(--accent);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: var(--heading);
+    font-size: 1.4rem;
+    margin: 1.5rem 0 1rem;
+  }
+
+  p {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  li::before {
+    content: "•";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+  }
+</style>

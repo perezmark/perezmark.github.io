@@ -1,0 +1,308 @@
+---
+const projects = [
+  {
+    title: "Jenkins CI/CD Pipeline",
+    link: "/projects/jenkins-pipeline"
+  },
+  {
+    title: "Bitbucket CI/CD Workflow",
+    link: "/projects/bitbucket-cicd"
+  },
+  {
+    title: "GitHub Actions Workflow",
+    link: "/projects/github-actions"
+  },
+  {
+    title: "EKS Infrastructure with Terraform",
+    link: "/projects/eks-terraform"
+  },
+  {
+    title: "AKS Infrastructure with Terraform",
+    link: "/projects/aks-terraform"
+  },
+  {
+    title: "GitOps with ArgoCD",
+    link: "/projects/argocd-gitops"
+  },
+  {
+    title: "Karpenter Node Scaling",
+    link: "/projects/karpenter-scaling"
+  }
+];
+
+const currentPath = Astro.url.pathname;
+const isProjectPage = currentPath.startsWith('/projects/');
+---
+
+<nav class="gear-nav">
+  <div class="gear-container">
+    <button class="gear-button" aria-label="Toggle navigation">
+      <i class="bx bx-cog gear-icon"></i>
+    </button>
+  </div>
+  <div class="nav-items" id="nav-items">
+    {!isProjectPage && (
+      <>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <div class="projects-dropdown">
+          <a href="#projects" class="projects-trigger">Projects</a>
+          <div class="projects-menu">
+            {projects.map(project => (
+              <a href={project.link}>{project.title}</a>
+            ))}
+          </div>
+        </div>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </>
+    )}
+    {isProjectPage && (
+      <>
+        <a href="/">Home</a>
+        <div class="projects-dropdown">
+          <a href="/#projects" class="projects-trigger">Projects</a>
+          <div class="projects-menu">
+            {projects.map(project => (
+              <a href={project.link} class={currentPath === project.link ? 'active' : ''}>
+                {project.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      </>
+    )}
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const gearButton = document.querySelector('.gear-button');
+    const navItems = document.querySelector('#nav-items');
+    const gearIcon = document.querySelector('.gear-icon');
+    let isOpen = false;
+
+    gearButton?.addEventListener('click', () => {
+      isOpen = !isOpen;
+      navItems?.classList.toggle('active');
+      navItems?.setAttribute('data-clicked', isOpen.toString());
+      if (gearIcon) {
+        gearIcon.style.animationPlayState = isOpen ? 'paused' : 'running';
+      }
+    });
+
+    const gearNav = document.querySelector('.gear-nav');
+    gearNav?.addEventListener('mouseenter', () => {
+      if (!navItems?.getAttribute('data-clicked')) {
+        navItems?.classList.add('active');
+        if (gearIcon) {
+          gearIcon.style.animationPlayState = 'paused';
+        }
+      }
+    });
+
+    gearNav?.addEventListener('mouseleave', () => {
+      if (!navItems?.getAttribute('data-clicked')) {
+        navItems?.classList.remove('active');
+        if (gearIcon) {
+          gearIcon.style.animationPlayState = 'running';
+        }
+      }
+    });
+
+    // Projects dropdown functionality
+    const projectsDropdown = document.querySelector('.projects-dropdown');
+    const projectsMenu = document.querySelector('.projects-menu');
+
+    projectsDropdown?.addEventListener('mouseenter', () => {
+      projectsMenu?.classList.add('active');
+    });
+
+    projectsDropdown?.addEventListener('mouseleave', () => {
+      projectsMenu?.classList.remove('active');
+    });
+
+    // Handle smooth scrolling for anchor links
+    document.querySelectorAll('.nav-items a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        const section = document.querySelector(href);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+          navItems?.classList.remove('active');
+          navItems?.setAttribute('data-clicked', 'false');
+          if (gearIcon) {
+            gearIcon.style.animationPlayState = 'running';
+          }
+          isOpen = false;
+        }
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!gearNav?.contains(e.target as Node) && isOpen) {
+        isOpen = false;
+        navItems?.classList.remove('active');
+        navItems?.setAttribute('data-clicked', 'false');
+        if (gearIcon) {
+          gearIcon.style.animationPlayState = 'running';
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .gear-nav {
+    position: relative;
+    display: flex;
+    margin-left: 0;
+  }
+
+  .gear-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .gear-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gear-icon {
+    font-size: 2.5rem;
+    color: var(--heading);
+    animation: rotate 12s linear infinite;
+    transition: transform 0.5s ease-in-out, color 0.5s ease;
+    cursor: pointer;
+    font-size: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .gear-icon {
+      font-size: 2.5rem;
+    }
+  }
+
+  .gear-icon:hover {
+    color: var(--accent);
+    transform: rotate(360deg) scale(1.2);
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .nav-items {
+    position: absolute;
+    left: 3rem;
+    top: 0;
+    display: flex;
+    gap: 1rem;
+    background: rgba(26, 27, 38, 0.9);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    opacity: 0;
+    transform: translateX(-20px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
+    pointer-events: none;
+    flex-direction: column;
+    max-width: calc(100vw - 160px);
+    font-size: 0.9rem;
+  }
+
+  .nav-items[data-clicked="true"],
+  .nav-items.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .projects-dropdown {
+    position: relative;
+  }
+
+  .projects-menu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: rgba(26, 27, 38, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 0.5rem;
+    opacity: 0;
+    transform: translateX(10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .projects-menu.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .projects-menu a {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .projects-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .projects-menu a.active {
+    background: var(--accent);
+    color: var(--background);
+  }
+
+  @media (min-width: 768px) {
+    .nav-items {
+      flex-direction: row;
+      left: 4rem;
+      gap: 1.5rem;
+      padding: 1rem 2rem;
+      max-width: none;
+      font-size: 1rem;
+    }
+
+    .projects-menu {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+    }
+
+    .projects-menu.active {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  .nav-items a {
+    color: var(--heading);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .nav-items a:hover {
+    color: var(--accent);
+  }
+</style>

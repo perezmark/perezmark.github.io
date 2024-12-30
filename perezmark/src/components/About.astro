@@ -1,0 +1,147 @@
+---
+const achievements = [
+  "Architected and implemented secure cloud-native solutions on AWS and Azure",
+  "Established GitOps practices with ArgoCD reducing deployment errors by 90%",
+  "Implemented Zero Trust security model across Kubernetes clusters",
+  "Automated security scanning and compliance checks in CI/CD pipelines"
+];
+---
+
+<section class="about" id="about">
+  <div class="about-content">
+    <div class="about-text">
+      <h2>About <span>Me</span></h2>
+      <div class="bio-container">
+        <div class="bio-text">
+          <p class="bio">
+            Senior DevSecOps Engineer passionate about building secure, scalable cloud infrastructure. 
+            Specialized in Kubernetes security, GitOps practices, and implementing Zero Trust architectures. 
+            Expert in automating security controls and compliance checks throughout the CI/CD pipeline. 
+            Committed to delivering infrastructure solutions that balance innovation with enterprise-grade security.
+          </p>
+          <div class="achievements">
+            {achievements.map(achievement => (
+              <div class="achievement-item">
+                <i class="bx bx-check-circle"></i>
+                <span>{achievement}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    min-height: 100vh;
+    padding: 6rem 10%;
+    display: flex;
+    align-items: center;
+  }
+
+  .about-content {
+    width: 100%;
+  }
+
+  .about-text {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(26, 27, 38, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  h2 {
+    width: 100%;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(45deg, var(--heading) 30%, var(--accent) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h2 span {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(45deg, var(--accent) 30%, var(--heading) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bio-container {
+    padding: 3rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.01);
+  }
+
+  .bio {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    color: var(--text);
+  }
+
+  .achievements {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text);
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .achievement-item:hover {
+    transform: translateY(-3px);
+  }
+
+  .achievement-item i {
+    color: var(--accent);
+    font-size: 1.4rem;
+    transition: transform 0.3s ease;
+  }
+
+  .achievement-item span {
+    flex: 1;
+  }
+
+  .achievement-item:hover i {
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .bio-container {
+      padding: 2rem;
+    }
+
+    h2 {
+      font-size: 3rem;
+    }
+
+    .bio {
+      font-size: 1.1rem;
+    }
+
+    .achievements {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

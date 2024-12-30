@@ -1,0 +1,162 @@
+---
+---
+
+<section class="contact" id="contact">
+  <h2 class="heading">Let's <span>Connect</span></h2>
+  <p class="subtitle">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+  
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <div class="info-item">
+        <i class="bx bx-envelope"></i>
+        <span>markperez.devops@gmail.com</span>
+      </div>
+    </div>
+
+    <form class="contact-form">
+      <div class="form-group">
+        <input type="text" placeholder="Name" required />
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Email" required />
+      </div>
+      <div class="form-group">
+        <textarea placeholder="Message" required></textarea>
+      </div>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 6rem 10%;
+  }
+
+  .heading {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(45deg, var(--heading) 30%, var(--accent) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .heading span {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(45deg, var(--accent) 30%, var(--heading) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+  }
+
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .contact-info {
+    background: rgba(26, 27, 38, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .contact-info h3 {
+    color: var(--heading);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .info-item i {
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+
+  .contact-form {
+    background: rgba(26, 27, 38, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  textarea {
+    height: 150px;
+    resize: vertical;
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  button {
+    width: 100%;
+    height: 48px;
+    padding: 0 1.5rem;
+    background: var(--accent);
+    color: var(--background);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: block;
+    margin-top: 1rem;
+  }
+
+  button:hover {
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+    }
+
+    .heading {
+      font-size: 3rem;
+    }
+  }
+</style>

@@ -1,0 +1,137 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectDiagram from '../../components/ProjectDiagram.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+---
+
+<Layout title="AKS Infrastructure with Terraform - Mark Lester Perez">
+  <main class="project-page">
+    <ProjectHeader />
+    <h1>AKS Infrastructure with Terraform</h1>
+    
+    <section class="overview">
+      <h2>Project Overview</h2>
+      <p>
+        Enterprise-grade Azure Kubernetes Service (AKS) deployment using Terraform, implementing
+        security best practices, advanced networking, and comprehensive monitoring solutions.
+      </p>
+    </section>
+
+    <section class="technologies">
+      <h2>Technologies Used</h2>
+      <ul>
+        <li>Azure Kubernetes Service (AKS)</li>
+        <li>Terraform</li>
+        <li>Azure Virtual Network</li>
+        <li>Azure Monitor</li>
+        <li>Azure Key Vault</li>
+        <li>Azure Container Registry</li>
+        <li>Azure Application Gateway</li>
+      </ul>
+    </section>
+
+    <section class="implementation">
+      <h2>Implementation Details</h2>
+      
+      <h3>Core Infrastructure</h3>
+      <ul>
+        <li>Virtual Network with subnet segregation</li>
+        <li>AKS cluster with system and user node pools</li>
+        <li>Private cluster configuration</li>
+        <li>Integration with Azure AD</li>
+        <li>Container Registry with geo-replication</li>
+      </ul>
+
+      <h3>Security Measures</h3>
+      <ul>
+        <li>Azure AD integration for RBAC</li>
+        <li>Network policies implementation</li>
+        <li>Pod identity configuration</li>
+        <li>Secret management with Key Vault</li>
+        <li>Container security with Azure Defender</li>
+      </ul>
+
+      <h3>Monitoring Setup</h3>
+      <ul>
+        <li>Azure Monitor for containers</li>
+        <li>Log Analytics workspace</li>
+        <li>Application Insights integration</li>
+        <li>Custom dashboards and alerts</li>
+      </ul>
+    </section>
+
+    <section class="architecture">
+      <h2>Architecture Diagram</h2>
+      <ProjectDiagram type="aks" />
+    </section>
+
+    <section class="architecture">
+      <h2>Architecture Overview</h2>
+      <p>
+        The infrastructure implements a production-ready AKS environment with:
+      </p>
+      <ul>
+        <li>Multi-region deployment capability</li>
+        <li>Dedicated node pools for different workloads</li>
+        <li>Private networking with Azure Firewall</li>
+        <li>Automated scaling configurations</li>
+        <li>Disaster recovery procedures</li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .project-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: var(--heading);
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    color: var(--accent);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: var(--heading);
+    font-size: 1.4rem;
+    margin: 1.5rem 0 1rem;
+  }
+
+  p {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  li::before {
+    content: "•";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+  }
+</style>

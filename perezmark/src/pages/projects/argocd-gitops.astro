@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectDiagram from '../../components/ProjectDiagram.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+---
+
+<Layout title="GitOps with ArgoCD - Mark Lester Perez">
+  <main class="project-page">
+    <ProjectHeader />
+    <h1>GitOps with ArgoCD</h1>
+    
+    <section class="overview">
+      <h2>Project Overview</h2>
+      <p>
+        Implementation of GitOps practices using ArgoCD for automated application deployment
+        and configuration management across multiple Kubernetes clusters.
+      </p>
+    </section>
+
+    <section class="technologies">
+      <h2>Technologies Used</h2>
+      <ul>
+        <li>ArgoCD</li>
+        <li>Kubernetes</li>
+        <li>Helm</li>
+        <li>Kustomize</li>
+        <li>GitHub/GitLab</li>
+        <li>Sealed Secrets</li>
+        <li>Prometheus & Grafana</li>
+      </ul>
+    </section>
+
+    <section class="implementation">
+      <h2>Implementation Details</h2>
+      
+      <h3>GitOps Setup</h3>
+      <ul>
+        <li>Multi-cluster application deployment</li>
+        <li>Environment-specific configurations</li>
+        <li>Automated sync policies</li>
+        <li>Progressive delivery strategies</li>
+        <li>Configuration drift detection</li>
+      </ul>
+
+      <h3>Security Features</h3>
+      <ul>
+        <li>RBAC integration</li>
+        <li>Secret management</li>
+        <li>SSO configuration</li>
+        <li>Audit logging</li>
+        <li>Policy enforcement</li>
+      </ul>
+
+      <h3>Monitoring & Alerting</h3>
+      <ul>
+        <li>Deployment metrics</li>
+        <li>Sync status monitoring</li>
+        <li>Health checks</li>
+        <li>Custom dashboards</li>
+        <li>Alert configurations</li>
+      </ul>
+    </section>
+
+    <section class="architecture">
+      <h2>Architecture Diagram</h2>
+      <ProjectDiagram type="argocd" />
+    </section>
+
+    <section class="architecture">
+      <h2>Architecture Overview</h2>
+      <p>
+        The GitOps implementation follows best practices for continuous deployment:
+      </p>
+      <ul>
+        <li>Declarative infrastructure definition</li>
+        <li>Git as single source of truth</li>
+        <li>Automated reconciliation</li>
+        <li>Self-healing capabilities</li>
+        <li>Rollback procedures</li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .project-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: var(--heading);
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    color: var(--accent);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: var(--heading);
+    font-size: 1.4rem;
+    margin: 1.5rem 0 1rem;
+  }
+
+  p {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  li::before {
+    content: "•";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+  }
+</style>

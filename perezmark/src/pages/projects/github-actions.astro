@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectDiagram from '../../components/ProjectDiagram.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+---
+
+<Layout title="GitHub Actions Workflow - Mark Lester Perez">
+  <main class="project-page">
+    <ProjectHeader />
+    <h1>GitHub Actions Workflow</h1>
+    
+    <section class="overview">
+      <h2>Project Overview</h2>
+      <p>
+        Implementation of a comprehensive CI/CD workflow using GitHub Actions for
+        automated Spring Boot application deployment to AWS ECS.
+      </p>
+    </section>
+
+    <section class="prerequisites">
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>GitHub repository setup</li>
+        <li>AWS credentials in secrets</li>
+        <li>ECR repository ready</li>
+        <li>ECS cluster configured</li>
+        <li>Spring Boot application with Dockerfile</li>
+      </ul>
+    </section>
+
+    <section class="implementation">
+      <h2>Workflow Steps</h2>
+      
+      <h3>1. Build Application</h3>
+      <ul>
+        <li>Setup Java environment</li>
+        <li>Configure caching</li>
+        <li>Build with Maven/Gradle</li>
+        <li>Run unit tests</li>
+        <li>Upload build artifacts</li>
+      </ul>
+
+      <h3>2. Build and Push Docker Image</h3>
+      <ul>
+        <li>Configure QEMU/Buildx</li>
+        <li>Run Trivy scans</li>
+        <li>Login to Amazon ECR</li>
+        <li>Build multi-platform image</li>
+        <li>Push to registry</li>
+        <li>Send scan results to Slack/Teams</li>
+      </ul>
+
+      <h3>3. Deploy to ECS</h3>
+      <ul>
+        <li>Configure AWS credentials</li>
+        <li>Update service definition</li>
+        <li>Deploy new revision</li>
+        <li>Monitor deployment</li>
+        <li>Verify application health</li>
+      </ul>
+    </section>
+
+    <section class="architecture">
+      <h2>Architecture Diagram</h2>
+      <ProjectDiagram type="github" />
+    </section>
+
+    <section class="features">
+      <h2>Workflow Features</h2>
+      <ul>
+        <li>Matrix testing strategy</li>
+        <li>Environment deployments</li>
+        <li>Automated security scans</li>
+        <li>Deployment approvals</li>
+        <li>Status notifications</li>
+        <li>Integrated Slack/Teams alerts for security findings</li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .project-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: var(--heading);
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    color: var(--accent);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: var(--heading);
+    font-size: 1.4rem;
+    margin: 1.5rem 0 1rem;
+  }
+
+  p {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  li::before {
+    content: "•";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+  }
+</style>

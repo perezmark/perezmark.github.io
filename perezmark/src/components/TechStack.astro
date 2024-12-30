@@ -1,0 +1,217 @@
+---
+const categories = {
+  "Cloud Platforms": {
+    aws: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
+    azure: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+    gcp: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    huawei: "https://e7.pngegg.com/pngimages/989/20/png-clipart-huawei-cloud-computing-huawei-text-cloud-computing.png",
+    digitalocean: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg"
+  },
+  "CI/CD & Version Control": {
+    gitlab: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg",
+    github: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    jenkins: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg",
+    bitbucket: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg"
+  },
+  "Containerization & Orchestration": {
+    kubernetes: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+    docker: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    istio: "https://istio.io/latest/img/istio-whitelogo-bluebackground-unframed.svg",
+    cilium: "https://cdn.cdnlogo.com/logos/c/81/cilium.svg",
+    karpenter: "https://karpenter.sh/preview/assets/karpenter.png",
+    helm: "https://helm.sh/img/helm.svg",
+    argocd: "https://argo-cd.readthedocs.io/en/stable/assets/logo.png",
+    crossplane: "https://crossplane.io/img/crossplane-logo.svg",
+    "cert-manager": "https://cert-manager.io/images/cert-manager-logo.svg"
+  },
+  "Infrastructure as Code": {
+    terraform: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
+    terragrunt: "https://cdn.jsdelivr.net/gh/gruntwork-io/terragrunt/assets/terragrunt.svg"
+  },
+  "Security & Access Management": {
+    keycloak: "https://www.keycloak.org/resources/images/keycloak_icon_512px.svg",
+    sonarqube: "https://www.sonarqube.org/assets/logo-31ad3115b1b4b120f3d1efd63e6b13ac9f1f89437f0cf6881cc4d8b5603a52b4.svg",
+    trivy: "https://aquasecurity.github.io/trivy/latest/imgs/logo.png",
+    snyk: "https://snyk.io/style/asset/logo/snyk-print.svg"
+  },
+  "Artifact Management": {
+    nexus: "https://help.sonatype.com/docs/files/331022/34537964/3/1564671303641/NexusRepo_Icon.png",
+    harbor: "https://goharbor.io/img/logos/harbor-icon-color.png"
+  },
+  "Monitoring & Observability": {
+    prometheus: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg",
+    grafana: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg",
+    loki: "https://grafana.com/static/img/logos/logo-loki.svg",
+    thanos: "https://raw.githubusercontent.com/thanos-io/thanos/main/docs/img/Thanos-logo_full.svg",
+    opentelemetry: "https://opentelemetry.io/img/logos/opentelemetry-horizontal-color.svg",
+    promtail: "https://grafana.com/static/img/logos/logo-promtail.svg",
+    tempo: "https://grafana.com/static/img/logos/logo-tempo.svg",
+    mimir: "https://grafana.com/static/img/logos/logo-mimir.svg",
+    alloy: "https://grafana.com/static/img/logos/grafana_alloy.svg"
+  },
+  "Operating Systems & Web Servers": {
+    linux: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+    nginx: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg"
+  },
+  "Programming & Scripting": {
+    python: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    bash: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg",
+    javascript: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    go: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg",
+    yaml: "https://cdn.worldvectorlogo.com/logos/yaml.svg",
+    terraform: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg"
+  }
+};
+---
+
+<div class="tech-stack">
+  <h2 class="heading"><span>Tools & Technologies</span></h2>
+  {Object.entries(categories).map(([category, tools]) => (
+    <div class="category-section">
+      <h3>{category}</h3>
+      <div class="logo-grid">
+        {Object.entries(tools).map(([name, url]) => (
+          <div class="logo-item">
+            <img src={url} alt={name} title={name} />
+            <span class="logo-name">{name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .tech-stack {
+    padding: 6rem 10%;
+  }
+
+  .heading {
+    text-align: center;
+    width: 100%;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(45deg, var(--heading) 30%, var(--accent) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .heading span {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(45deg, var(--accent) 30%, var(--heading) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .category-section {
+    margin-bottom: 4rem;
+    background: var(--secondary);
+    background: rgba(26, 27, 38, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(110, 60, 188, 0.2);
+    border: 1px solid rgba(187, 134, 252, 0.1);
+  }
+
+  .category-section h3 {
+    color: var(--heading);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+    row-gap: 2rem;
+  }
+
+  .logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+    position: relative;
+    width: calc(20% - 1.6rem);
+    text-align: center;
+    min-width: 120px;
+  }
+
+  .logo-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .logo-item img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .logo-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 768px) {
+    .logo-item {
+      width: calc(33.333% - 1.33rem);
+    }
+    
+    .logo-item img {
+      width: 48px;
+      height: 48px;
+    }
+    
+    .logo-name {
+      font-size: 0.8rem;
+    }
+
+    .logo-grid {
+      gap: 1rem;
+      padding: 0 0.5rem;
+    }
+  }
+
+  .category-section:has(h3:contains("Monitoring & Observability")) .logo-item img {
+    animation: horizontalOrbit 10s linear infinite;
+  }
+
+  .category-section:has(h3:contains("Monitoring & Observability")) .logo-item:hover img {
+    animation: horizontalOrbit 5s linear infinite;
+  }
+
+  @keyframes horizontalOrbit {
+    from {
+      transform: translateX(-30px);
+    }
+    50% {
+      transform: translateX(30px);
+    }
+    to {
+      transform: translateX(-30px);
+    }
+  }
+
+  .logo-name {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+</style>

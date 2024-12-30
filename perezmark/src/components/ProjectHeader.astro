@@ -1,0 +1,68 @@
+---
+import Navigation from './Navigation.astro';
+
+---
+
+<header class="header">
+  <Navigation />
+  <div class="social-section">
+    <a href="mailto:perezmark.tomcat@gmail.com"><i class="bx bx-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/markldp"><i class="bx bxl-linkedin"></i></a>
+    <a href="https://www.upwork.com/YOUR_UPWORK_PROFILE"><i class="bx bxl-upwork"></i></a>
+    <a href="https://medium.com/@perezmark.tomcat"><i class="bx bxl-medium"></i></a>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    background-color: var(--background);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .header {
+      padding: 20px 10%;
+    }
+  }
+
+  .social-section {
+    width: auto;
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .social-section {
+      width: 170px;
+      gap: 1.5rem;
+      justify-content: flex-end;
+    }
+  }
+
+  .social-section a {
+    color: var(--heading);
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .social-section a {
+      font-size: 1.2rem;
+    }
+  }
+
+  .social-section a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+</style>

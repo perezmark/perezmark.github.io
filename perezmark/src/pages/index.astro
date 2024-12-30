@@ -1,34 +1,363 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-const name = "mark";
+import Layout from '../layouts/Layout.astro';
+import TechStack from '../components/TechStack.astro';
+import Certifications from '../components/Certifications.astro';
+import Projects from '../components/Projects.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Contact from '../components/Contact.astro';
+import Navigation from '../components/Navigation.astro';
 ---
 
-<MainLayout
-	title="Mark Perez Portfolio Site"
-	seoTitle="Mark Perezs, DevOps Engineer Portfolio"
-	seoDesc="DevOps Engineer who expertise in Cloud(AWS), Kubernetes, IaC, Automation, Platform Engineering"
->
-	<div class="w-8/12 md:w-6/12 mx-auto">
-    <h1
-		class="text-5xl md:text-6xl text-center drop-shadow-[0px_35px_35px_rgba(39,245,131,0.6)]"
-    >
-    Hey 👋, I am Mark Perez
-    </h1>
-    <div id="typed-strings">
-        <p>I am a <strong>DevSecOps Engineer</strong></p>
-		<p>I <em>work</em> with Cloud(AWS), Kubernetes, IaC, Automation, Platform Engineering.</p>
-    </div>
+<Layout title="Mark Lester Perez - DevOps Engineer">
+	<main>
+		<header class="header">
+			<Navigation />
+			<div class="social-section">
+				<a href="mailto:perezmark.tomcat@gmail.com"><i class="bx bx-envelope"></i></a>
+				<a href="https://www.linkedin.com/in/markldp"><i class="bx bxl-linkedin"></i></a>
+				<a href="https://www.upwork.com/YOUR_UPWORK_PROFILE"><i class="bx bxl-upwork"></i></a>
+				<a href="https://medium.com/@perezmark.tomcat"><i class="bx bxl-medium"></i></a>
+			</div>
+		</header>
 
-    <div class="text-center mt-6"><span id="typed"></span></div>
-	</div>
-</MainLayout>
+		<section class="home" id="home">
+			<div class="home-content">
+				<p class="greeting">Hi there 👋 I'm</p>
+				<h1>Mark Lester Perez</h1>
+				<h3 class="role">Senior DevSecOps Engineer 👨‍💻</h3>
+				<p class="brief">
+					Experienced DevOps professional specializing in cloud architecture, security, and automation
+				</p>
+				<a href="#contact" class="hire-btn">
+					<span>Hire Me</span>
+					<i class='bx bx-right-arrow-alt'></i>
+				</a>
+			</div>
+			<div class="home-image">
+				<img src="engineer.webp" alt="3D Engineer with MacBook" />
+			</div>
+		</section>
+		<About />
+		<Services />
+		<TechStack />
+		<Projects />
+		<Certifications />
+		<Contact />
+	</main>
 
-<script>
-	import Typed from "typed.js";
+<style>
+	.header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding: 1rem 5%;
+		background-color: var(--background);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		z-index: 100;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		@media (min-width: 768px) {
+			padding: 20px 10%;
+		}
+	}
 
-	var typed = new Typed("#typed", {
-    stringsElement: "#typed-strings",
-    typeSpeed: 50,
-    loop: true,
-	});
-</script>
+	.gear-nav {
+		position: relative;
+		display: flex;
+		margin-left: 0;
+	}
+
+	.gear-container {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		align-items: center;
+		display: flex;
+		align-items: center;
+	}
+
+	.gear-button {
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.gear-button {
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.gear-icon {
+		font-size: 2.5rem;
+		color: var(--heading);
+		animation: rotate 12s linear infinite;
+		transition: transform 0.5s ease-in-out, color 0.5s ease;
+		cursor: pointer;
+		font-size: 2rem;
+		@media (min-width: 768px) {
+			font-size: 2.5rem;
+		}
+	}
+
+	.gear-icon:hover {
+		color: var(--accent);
+		transform: rotate(360deg) scale(1.2);
+	}
+
+	.nav-items.active {
+		opacity: 1;
+		transform: translateX(0);
+		pointer-events: all;
+	}
+
+	.nav-items.active {
+		opacity: 1;
+		transform: translateX(0);
+		pointer-events: all;
+	}
+
+	@keyframes rotate {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
+	}
+
+	.nav-items {
+		position: absolute;
+		left: 3rem;
+		top: 0;
+		display: flex;
+		gap: 1rem;
+		background: rgba(26, 27, 38, 0.9);
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		opacity: 0;
+		transform: translateX(-20px);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		z-index: 1;
+		transition: all 0.5s ease-in-out;
+		pointer-events: none;
+		flex-direction: column;
+		max-width: calc(100vw - 160px);
+		font-size: 0.9rem;
+		
+		@media (min-width: 768px) {
+			flex-direction: row;
+			left: 4rem;
+			gap: 1.5rem;
+			padding: 1rem 2rem;
+			max-width: none;
+			font-size: 1rem;
+		}
+	}
+
+	.nav-items a {
+		color: var(--heading);
+		text-decoration: none;
+		transition: color 0.3s ease;
+		white-space: nowrap;
+	}
+
+	.nav-items a:hover {
+		color: var(--accent);
+	}
+
+	.social-section {
+		width: auto;
+		display: flex;
+		gap: 0.8rem;
+		align-items: center;
+		
+		@media (min-width: 768px) {
+			width: 170px;
+			gap: 1.5rem;
+			justify-content: flex-end;
+		}
+	}
+
+	.social-section a {
+		color: var(--heading);
+		font-size: 1.1rem;
+		transition: color 0.3s ease;
+		
+		@media (min-width: 768px) {
+			font-size: 1.2rem;
+		}
+	}
+
+	.social-section a:hover {
+		color: var(--accent);
+		transform: translateY(-2px);
+		gap: 1.5rem;
+		color: var(--heading);
+		font-size: 1.5rem;
+		transition: color 0.3s ease;
+		
+		@media (min-width: 768px) {
+			font-size: 1.5rem;
+		}
+	}
+
+	.home {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 70px 5% 0;
+		gap: 2rem;
+		flex-direction: column-reverse;
+		
+		@media (min-width: 768px) {
+			flex-direction: row;
+			justify-content: space-between;
+			padding: 70px 10% 0;
+		}
+	}
+
+	.home-content {
+		flex: 0 1 100%;
+		max-width: 500px;
+		text-align: center;
+		
+		@media (min-width: 768px) {
+			text-align: left;
+		}
+	}
+
+	.greeting {
+		font-size: 1.2rem;
+		
+		@media (min-width: 768px) {
+			font-size: 1.5rem;
+		}
+		color: var(--text);
+		margin-bottom: 0.5rem;
+	}
+
+	.home-content h1 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+		color: var(--heading);
+		
+		@media (min-width: 768px) {
+			font-size: 3.5rem;
+		}
+	}
+
+	.role {
+		font-size: 1.4rem;
+		font-weight: 700;
+		color: var(--accent);
+		margin-bottom: 1rem;
+		
+		@media (min-width: 768px) {
+			font-size: 1.8rem;
+		}
+	}
+
+	.brief {
+		font-size: 1rem;
+		color: var(--text);
+		margin-bottom: 3rem;
+		line-height: 1.6;
+		
+		@media (min-width: 768px) {
+			font-size: 1.2rem;
+		}
+	}
+
+  .hire-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(45deg, var(--accent), var(--primary));
+    color: var(--background);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    
+    @media (min-width: 768px) {
+      padding: 1rem 2rem;
+    }
+  }
+
+  .hire-btn i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .hire-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+  }
+
+  .hire-btn:hover i {
+    transform: translateX(5px);
+  }
+
+  .hire-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+
+  .hire-btn:hover::before {
+    left: 100%;
+  }
+
+	.home-image {
+		flex: 0 1 300px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		@media (min-width: 768px) {
+			flex: 0 1 400px;
+		}
+	}
+
+	.home-image img {
+		width: 200px;
+		height: auto;
+		opacity: 0.9;
+		animation: float 3s ease-in-out infinite;
+		
+		@media (min-width: 768px) {
+			width: 300px;
+		}
+
+	@keyframes float {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-20px); }
+	}
+</style>

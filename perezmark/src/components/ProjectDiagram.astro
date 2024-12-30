@@ -1,0 +1,215 @@
+---
+export interface Props {
+  type: string;
+}
+
+const { type } = Astro.props;
+
+const diagrams = {
+  jenkins: `
+    graph TB
+      
+      subgraph CI/CD Pipeline
+        A["🔄 Source Code"] --> B["🛠️ Jenkins Pipeline"]
+        B --> C["📦 Build & Test"]
+        C --> D["🔒 Security Scan"]
+        D --> E["🐳 Docker Build"]
+        E --> F["📤 Push to ECR"]
+        F --> G["🚀 Deploy to ECS"]
+      end
+      
+      subgraph Security
+        D --> H["🔍 SonarQube"]
+        D --> I["🛡️ Trivy Scan"]
+        H --> N["📱 Notifications"]
+        I --> N
+      end
+      
+      subgraph AWS
+        F --> J["📦 Amazon ECR"]
+        G --> K["🚢 Amazon ECS"]
+      end
+  `,
+  bitbucket: `
+    graph TB
+      
+      subgraph Bitbucket Pipeline
+        A["💻 Source Code"] --> B["⚡ Pipeline Trigger"]
+        B --> C["🔨 Build & Test"]
+        C --> D["🔐 Security Checks"]
+        D --> E["🐋 Docker Build"]
+        E --> F["📤 Push to ECR"]
+        F --> N["📱 Notifications"]
+        N --> G["🚀 Deploy to ECS"]
+      end
+      
+      subgraph AWS Infrastructure
+        F --> H["📦 Amazon ECR"]
+        G --> I["🚢 ECS Service"]
+        I --> J["🎯 Target Group"]
+        J --> K["⚖️ ALB"]
+      end
+  `,
+  github: `
+    graph TB
+      
+      subgraph GitHub Actions
+        A["📝 Source Code"] --> B["⚡ Workflow Trigger"]
+        B --> C["🔨 Build & Test"]
+        C --> D["🛡️ Security Scan"]
+        D --> E["🐳 Docker Build"]
+        E --> F["📤 Push to ECR"]
+        F --> N["📱 Notifications"]
+        N --> G["🚀 Deploy to ECS"]
+      end
+      
+      subgraph AWS
+        F --> H["📦 Amazon ECR"]
+        G --> I["☸️ ECS Cluster"]
+        I --> J["🔄 Service"]
+        J --> K["📋 Task Definition"]
+      end
+  `,
+  eks: `
+    graph TB
+      
+      subgraph Terraform Infrastructure
+        A["🏗️ Terraform Code"] --> B["🌐 VPC"]
+        B --> C["☸️ EKS Cluster"]
+        C --> D["💻 Node Groups"]
+        D --> E["🔒 Security Groups"]
+      end
+      
+      subgraph Kubernetes Components
+        C --> F["🎮 Control Plane"]
+        F --> G["🖥️ Worker Nodes"]
+        G --> H["📦 Pods"]
+      end
+      
+      subgraph AWS Services
+        I["🔑 IAM Roles"] --> C
+        J["🔐 KMS"] --> C
+        K["📊 CloudWatch"] --> C
+      end
+  `,
+  aks: `
+    graph TB
+      
+      subgraph Terraform Infrastructure
+        A["🏗️ Terraform Code"] --> B["📁 Resource Group"]
+        B --> C["🌐 Virtual Network"]
+        C --> D["☸️ AKS Cluster"]
+        D --> E["💻 Node Pools"]
+      end
+      
+      subgraph Azure Services
+        F["📊 Azure Monitor"] --> D
+        G["🔐 Azure KeyVault"] --> D
+        H["📦 ACR"] --> D
+      end
+      
+      subgraph Network
+        I["🌐 Application Gateway"] --> D
+        J["🔒 Private Link"] --> D
+      end
+  `,
+  argocd: `
+    graph LR
+      
+      subgraph Git Repositories
+        A["📄 App Manifests"] --> B["⚓ ArgoCD"]
+        C["⚙️ Config Repos"] --> B
+      end
+      
+      subgraph ArgoCD
+        B --> D["🎮 Application Controller"]
+        D --> E["📦 Repo Server"]
+        E --> F["🔌 API Server"]
+      end
+      
+      subgraph Kubernetes
+        F --> G["🚀 Deployments"]
+        F --> H["⚡ Services"]
+        F --> I["📝 ConfigMaps"]
+      end
+  `,
+  karpenter: `
+    graph TB
+      
+      subgraph Kubernetes
+        A["📦 Pending Pods"] --> B["🎮 Karpenter Controller"]
+        B --> C["🖥️ Node Provisioning"]
+      end
+      
+      subgraph AWS
+        C --> D["☁️ EC2 Fleet"]
+        D --> E["💻 Instance Types"]
+        E --> F["💰 Spot/On-Demand"]
+      end
+      
+      subgraph Monitoring
+        G["📊 Prometheus"] --> B
+        B --> H["📈 CloudWatch"]
+      end
+  `
+};
+---
+
+<div class="diagram-container">
+  <div class="mermaid">
+    {diagrams[type]}
+  </div>
+</div>
+
+<script>
+  import mermaid from 'mermaid';
+  mermaid.initialize({ 
+    securityLevel: 'loose',
+    theme: 'dark',
+    themeVariables: {
+      darkMode: true,
+      background: '#1A1B26',
+      mainBkg: '#1A1B26',
+      textColor: '#F5F5F7',
+      lineColor: '#A9B1D6'
+    },
+    flowchart: {
+      htmlLabels: true,
+      curve: 'basis'
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      mermaid.init(undefined, '.mermaid');
+    } catch (error) {
+      console.error('Mermaid initialization error:', error);
+    }
+  });
+</script>
+
+<style>
+  .diagram-container {
+    background: rgba(26, 27, 38, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid rgba(187, 134, 252, 0.1);
+    overflow-x: auto;
+  }
+
+  :global(.mermaid) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 300px;
+  }
+
+  @media (max-width: 768px) {
+    .diagram-container {
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+  }
+</style>
