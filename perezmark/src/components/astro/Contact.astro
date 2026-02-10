@@ -1,25 +1,22 @@
 ---
 import SectionHeading from './SectionHeading.astro';
-import { socialLinks, contactEmail } from '../../data/social';
+import ContactForm from '../ContactForm.tsx';
 ---
 
-<section id="contact" class="py-12 px-6">
-  <div class="max-w-2xl mx-auto">
-    <SectionHeading title="Contact" />
-    <p class="text-sm text-muted-foreground mb-4">
-      Reach me at <a href={`mailto:${contactEmail}`} class="text-foreground hover:text-primary transition-colors">{contactEmail}</a>
-    </p>
-    <div class="flex flex-wrap items-center gap-4">
-      {socialLinks.filter(l => l.name !== 'Email').map(link => (
-        <a
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
-        >
-          {link.name}
-        </a>
-      ))}
+<section id="contact" class="py-20 md:py-24 px-4 md:px-8 bg-secondary/50">
+  <div class="max-w-6xl mx-auto">
+    <SectionHeading
+      title="Let's Connect"
+      subtitle="I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions."
+    />
+    <div class="max-w-lg mx-auto">
+      <div class="text-center mb-8">
+        <p class="text-sm text-muted-foreground">
+          Or reach me directly at
+          <a href="mailto:markperez.devops@gmail.com" class="text-primary hover:underline">markperez.devops@gmail.com</a>
+        </p>
+      </div>
+      <ContactForm client:visible />
     </div>
   </div>
 </section>

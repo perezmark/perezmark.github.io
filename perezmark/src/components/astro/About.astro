@@ -1,14 +1,32 @@
 ---
 import SectionHeading from './SectionHeading.astro';
+
+const achievements = [
+  "Architected and implemented secure cloud-native solutions on AWS and Azure",
+  "Established GitOps practices with ArgoCD reducing deployment errors by 90%",
+  "Implemented Zero Trust security model across Kubernetes clusters",
+  "Automated security scanning and compliance checks in CI/CD pipelines",
+];
 ---
 
-<section id="about" class="py-12 px-6">
-  <div class="max-w-2xl mx-auto">
-    <SectionHeading title="About" />
-    <p class="text-muted-foreground leading-relaxed">
-      Licensed Electronics Engineer (BSc ECE, University of Santo Tomas) turned cloud infrastructure specialist.
-      I work at Capgemini helping enterprises adopt secure, scalable DevSecOps practices — from Kubernetes platform
-      engineering to GitOps workflows and Zero Trust security models.
-    </p>
+<section id="about" class="py-20 md:py-24 px-4 md:px-8">
+  <div class="max-w-3xl mx-auto">
+    <SectionHeading title="About Me" />
+    <div class="bg-card border border-border rounded-lg p-6 md:p-8">
+      <p class="text-muted-foreground text-base md:text-lg leading-relaxed mb-8">
+        Senior DevSecOps Engineer passionate about building secure, scalable cloud infrastructure.
+        Specialized in Kubernetes security, GitOps practices, and implementing Zero Trust architectures.
+        Expert in automating security controls and compliance checks throughout the CI/CD pipeline.
+        Committed to delivering infrastructure solutions that balance innovation with enterprise-grade security.
+      </p>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {achievements.map(achievement => (
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mt-0.5 flex-shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            <span class="text-muted-foreground text-sm">{achievement}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
