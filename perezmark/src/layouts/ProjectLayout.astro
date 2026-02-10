@@ -1,0 +1,62 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/astro/Header.astro';
+import Footer from '../components/astro/Footer.astro';
+import { projects } from '../data/projects';
+import { ChevronLeft, ChevronRight, LayoutGrid } from 'lucide-react';
+
+interface Props {
+  title: string;
+  projectTitle: string;
+}
+
+const { title, projectTitle } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const currentIndex = projects.findIndex(p => p.link === currentPath);
+const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+---
+
+<Layout title={title}>
+  <Header />
+  <main class="pt-24 pb-16 px-4 md:px-8">
+    <article class="max-w-3xl mx-auto">
+      <div class="mb-8">
+        <a href="/#projects" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Back to Projects
+        </a>
+        <h1 class="text-3xl md:text-4xl font-bold text-foreground">{projectTitle}</h1>
+      </div>
+
+      <div class="prose prose-stone max-w-none
+        prose-headings:text-foreground prose-headings:font-semibold
+        prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-primary
+        prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
+        prose-p:text-muted-foreground prose-p:leading-relaxed
+        prose-li:text-muted-foreground
+        prose-ul:my-4
+        prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+        prose-strong:text-foreground">
+        <slot />
+      </div>
+
+      <nav class="mt-16 pt-8 border-t border-border flex items-center justify-between">
+        {prevProject ? (
+          <a href={prevProject.link} class="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <span>{prevProject.title}</span>
+          </a>
+        ) : <div />}
+        {nextProject ? (
+          <a href={nextProject.link} class="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <span>{nextProject.title}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        ) : <div />}
+      </nav>
+    </article>
+  </main>
+  <Footer />
+</Layout>

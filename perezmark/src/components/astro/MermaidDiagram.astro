@@ -1,0 +1,45 @@
+---
+interface Props {
+  diagram: string;
+}
+
+const { diagram } = Astro.props;
+---
+
+<div class="my-8 bg-card border border-border rounded-lg p-4 md:p-6 overflow-x-auto">
+  <div class="mermaid flex justify-center min-h-[200px]">
+    {diagram}
+  </div>
+</div>
+
+<script>
+  import mermaid from 'mermaid';
+  mermaid.initialize({
+    securityLevel: 'loose',
+    theme: 'neutral',
+    themeVariables: {
+      background: '#FFFFFF',
+      mainBkg: '#F5F0E8',
+      primaryColor: '#F5F0E8',
+      primaryTextColor: '#1A1A1A',
+      primaryBorderColor: '#E8E0D4',
+      lineColor: '#C4956A',
+      secondaryColor: '#FAF9F6',
+      tertiaryColor: '#FFFFFF',
+      textColor: '#1A1A1A',
+      fontSize: '14px',
+    },
+    flowchart: {
+      htmlLabels: true,
+      curve: 'basis',
+    },
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    mermaid.run({ querySelector: '.mermaid' }).catch(console.error);
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    mermaid.run({ querySelector: '.mermaid' }).catch(console.error);
+  });
+</script>

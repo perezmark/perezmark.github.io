@@ -1,0 +1,22 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import ContactForm from '../ContactForm.tsx';
+---
+
+<section id="contact" class="py-20 md:py-24 px-4 md:px-8 bg-secondary/50">
+  <div class="max-w-6xl mx-auto">
+    <SectionHeading
+      title="Let's Connect"
+      subtitle="I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions."
+    />
+    <div class="max-w-lg mx-auto">
+      <div class="text-center mb-8">
+        <p class="text-sm text-muted-foreground">
+          Or reach me directly at
+          <a href="mailto:markperez.devops@gmail.com" class="text-primary hover:underline">markperez.devops@gmail.com</a>
+        </p>
+      </div>
+      <ContactForm client:visible />
+    </div>
+  </div>
+</section>
