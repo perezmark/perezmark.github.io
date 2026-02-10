@@ -1,33 +1,32 @@
 ---
+import { socialLinks, contactEmail } from '../../data/social';
 ---
 
-<section id="home" class="min-h-screen flex items-center py-20 md:py-24 px-4 md:px-8">
-  <div class="max-w-6xl mx-auto w-full flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
-    <div class="flex-1 text-center md:text-left max-w-xl">
-      <p class="text-muted-foreground text-lg mb-2">Hi there, I'm</p>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3">
-        Mark Lester Perez
-      </h1>
-      <h2 class="text-xl md:text-2xl font-semibold text-primary mb-4">
-        Senior DevSecOps Engineer
-      </h2>
-      <p class="text-muted-foreground text-base md:text-lg leading-relaxed mb-8">
-        Experienced DevOps professional specializing in cloud architecture, security, and automation
-      </p>
+<section id="home" class="min-h-[60vh] flex items-center pt-14">
+  <div class="max-w-2xl mx-auto w-full px-6 py-20">
+    <h1 class="text-2xl font-bold text-foreground mb-1">Mark Lester Perez</h1>
+    <p class="text-muted-foreground mb-6">Senior DevSecOps Engineer at Capgemini</p>
+    <p class="text-muted-foreground leading-relaxed mb-8">
+      I build secure, scalable cloud infrastructure. Specialized in
+      Kubernetes, GitOps, and Zero Trust architectures across AWS, Azure, and GCP.
+    </p>
+    <div class="flex flex-wrap items-center gap-4">
+      {socialLinks.filter(l => l.name !== 'Email').map(link => (
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {link.name}
+        </a>
+      ))}
       <a
-        href="#contact"
-        class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors"
+        href={`mailto:${contactEmail}`}
+        class="text-sm text-muted-foreground hover:text-foreground transition-colors"
       >
-        <span>Hire Me</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        Email
       </a>
-    </div>
-    <div class="flex-shrink-0">
-      <img
-        src="/engineer.webp"
-        alt="3D Engineer with MacBook"
-        class="w-48 md:w-72 h-auto animate-float opacity-90"
-      />
     </div>
   </div>
 </section>
