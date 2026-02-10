@@ -62,4 +62,25 @@ export const projects: Project[] = [
     tags: ["AWS ECS", "Laravel", "Docker", "Terraform", "GitLab CI/CD"],
     link: "/projects/laravel-ecs",
   },
+  {
+    title: "Toast IO — EKS Cost Optimization",
+    description:
+      "Right-sized 120+ Spring Boot microservices on EKS, achieving 40-60% infrastructure cost savings through data-driven resource tuning",
+    tags: ["AWS EKS", "Kubernetes", "Cost Optimization", "Spring Boot", "Datadog"],
+    link: "/projects/toast-io",
+  },
+  {
+    title: "Interlink IQ — AWS Cost Optimization",
+    description:
+      "Comprehensive AWS account cost optimization through unused resource removal, EBS GP3 migration, and EC2 right-sizing",
+    tags: ["AWS", "Cost Optimization", "EC2", "EBS", "Trusted Advisor"],
+    link: "/projects/interlink-iq",
+  },
+  {
+    title: "Flowerstore — Microservice ECS App",
+    description:
+      "Laravel microservice application deployed on ECS with CI/CD pipelines and Tailscale private networking for secure service communication",
+    tags: ["AWS ECS", "Laravel", "Tailscale", "CI/CD", "Docker"],
+    link: "/projects/flowerstore",
+  },
 ];

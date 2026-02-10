@@ -2,25 +2,45 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/astro/Header.astro';
 import Footer from '../components/astro/Footer.astro';
-import Hero from '../components/astro/Hero.astro';
-import About from '../components/astro/About.astro';
-import Services from '../components/astro/Services.astro';
-import TechStack from '../components/astro/TechStack.astro';
-import Projects from '../components/astro/Projects.astro';
-import Certifications from '../components/astro/Certifications.astro';
-import Contact from '../components/astro/Contact.astro';
 ---
 
-<Layout title="Mark Lester Perez - DevOps Engineer">
+<Layout title="Mark Lester Perez - Senior DevSecOps Engineer">
   <Header />
-  <main>
-    <Hero />
-    <About />
-    <Services />
-    <TechStack />
-    <Projects />
-    <Certifications />
-    <Contact />
+  <main class="pt-24 pb-16 px-4 md:px-8">
+    <div class="max-w-3xl mx-auto">
+      <div class="mb-6">
+        <h1 class="text-3xl md:text-4xl font-bold text-foreground">Mark Lester Perez</h1>
+        <p class="text-lg text-primary mt-2">Senior DevSecOps Engineer</p>
+      </div>
+
+      <div class="bg-card border border-border rounded-lg p-6 md:p-8 mb-8">
+        <p class="text-muted-foreground text-base md:text-lg leading-relaxed">
+          Senior DevSecOps Engineer passionate about building secure, scalable cloud infrastructure.
+          Specialized in Kubernetes security, GitOps practices, and implementing Zero Trust architectures.
+          Expert in automating security controls and compliance checks throughout the CI/CD pipeline.
+          Committed to delivering infrastructure solutions that balance innovation with enterprise-grade security.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="https://www.linkedin.com/in/markldp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://www.upwork.com/freelancers/~0103d5784415cbf113" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+          Upwork
+        </a>
+        <a href="https://medium.com/@perezmark.tomcat" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+          Medium
+        </a>
+        <a href="mailto:perezmark.tomcat@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email
+        </a>
+      </div>
+    </div>
   </main>
   <Footer />
 </Layout>

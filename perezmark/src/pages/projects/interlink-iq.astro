@@ -1,0 +1,80 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import MermaidDiagram from '../../components/astro/MermaidDiagram.astro';
+import { diagrams } from '../../data/diagrams';
+---
+
+<ProjectLayout title="Interlink IQ — AWS Cost Optimization - Mark Lester Perez" projectTitle="Interlink IQ — AWS Cost Optimization">
+  <h2>Project Overview</h2>
+  <p>
+    Conducted a comprehensive AWS account cost optimization engagement, identifying and eliminating
+    unused resources, migrating EBS volumes from GP2 to GP3, and right-sizing EC2 instances to
+    match actual workload requirements.
+  </p>
+
+  <h2>Technologies Used</h2>
+  <ul>
+    <li>AWS Cost Explorer</li>
+    <li>AWS Trusted Advisor</li>
+    <li>AWS Compute Optimizer</li>
+    <li>Amazon EC2</li>
+    <li>Amazon EBS</li>
+    <li>AWS CloudWatch</li>
+  </ul>
+
+  <h2>The Challenge</h2>
+  <p>
+    The AWS account had grown organically over time, accumulating unused resources from
+    decommissioned projects, over-provisioned EC2 instances running at low utilization, and
+    legacy GP2 EBS volumes that could benefit from the improved cost-performance ratio of GP3.
+  </p>
+
+  <h2>Implementation Details</h2>
+
+  <h3>1. Resource Audit & Discovery</h3>
+  <p>Performed a thorough audit using AWS-native tools:</p>
+  <ul>
+    <li>Ran AWS Trusted Advisor checks for idle and underutilized resources</li>
+    <li>Analyzed Cost Explorer data to identify spending trends and anomalies</li>
+    <li>Inventoried all EBS volumes, Elastic IPs, and unused snapshots</li>
+    <li>Reviewed EC2 instance utilization via CloudWatch metrics</li>
+  </ul>
+
+  <h3>2. Unused Resource Removal</h3>
+  <p>Cleaned up resources that were no longer serving any purpose:</p>
+  <ul>
+    <li>Released unattached Elastic IPs</li>
+    <li>Deleted orphaned EBS volumes and outdated snapshots</li>
+    <li>Terminated idle EC2 instances from legacy projects</li>
+    <li>Removed unused load balancers and target groups</li>
+  </ul>
+
+  <h3>3. EBS GP2 to GP3 Migration</h3>
+  <p>Migrated EBS volumes to the newer GP3 type for better cost efficiency:</p>
+  <ul>
+    <li>GP3 provides the same baseline performance as GP2 at ~20% lower cost</li>
+    <li>Migrated volumes in-place with zero downtime using AWS modify-volume</li>
+    <li>Configured IOPS and throughput independently based on actual workload needs</li>
+    <li>Validated performance post-migration via CloudWatch metrics</li>
+  </ul>
+
+  <h3>4. EC2 Right-Sizing</h3>
+  <p>Matched instance types to actual workload requirements:</p>
+  <ul>
+    <li>Analyzed 2-week CPU, memory, and network utilization patterns</li>
+    <li>Identified instances running below 30% average utilization</li>
+    <li>Downsized instances to appropriate types (e.g., m5.xlarge to m5.large)</li>
+    <li>Switched appropriate workloads to Graviton-based instances for further savings</li>
+  </ul>
+
+  <h2>Architecture Diagram</h2>
+  <MermaidDiagram diagram={diagrams["interlink-iq"]} />
+
+  <h2>Results</h2>
+  <ul>
+    <li><strong>~20% storage cost reduction</strong> from GP2 to GP3 migration</li>
+    <li>Eliminated recurring charges from unused Elastic IPs, volumes, and snapshots</li>
+    <li>Reduced EC2 compute spend through right-sizing and Graviton adoption</li>
+    <li>Established tagging policies and cost monitoring alerts to prevent future waste</li>
+  </ul>
+</ProjectLayout>

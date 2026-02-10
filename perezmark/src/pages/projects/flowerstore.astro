@@ -1,0 +1,83 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import MermaidDiagram from '../../components/astro/MermaidDiagram.astro';
+import { diagrams } from '../../data/diagrams';
+---
+
+<ProjectLayout title="Flowerstore — Microservice ECS App - Mark Lester Perez" projectTitle="Flowerstore — Microservice ECS App">
+  <h2>Project Overview</h2>
+  <p>
+    Designed and deployed a Laravel-based microservice application on AWS ECS Fargate, with
+    a full CI/CD pipeline and Tailscale private networking for secure inter-service communication
+    without exposing internal endpoints to the public internet.
+  </p>
+
+  <h2>Technologies Used</h2>
+  <ul>
+    <li>AWS ECS Fargate</li>
+    <li>Laravel Framework</li>
+    <li>Docker & Docker Compose</li>
+    <li>Tailscale (mesh VPN)</li>
+    <li>Application Load Balancer</li>
+    <li>Amazon RDS (MySQL)</li>
+    <li>CI/CD Pipeline (GitLab CI)</li>
+    <li>Terraform</li>
+  </ul>
+
+  <h2>The Challenge</h2>
+  <p>
+    The application needed to be split into multiple Laravel microservices (orders, inventory,
+    payments) that communicate securely over a private network, while remaining easy to deploy
+    and scale independently on ECS Fargate.
+  </p>
+
+  <h2>Implementation Details</h2>
+
+  <h3>1. Microservice Architecture</h3>
+  <p>Decomposed the monolithic Laravel app into focused services:</p>
+  <ul>
+    <li>Order Service — handles order lifecycle and customer-facing API</li>
+    <li>Inventory Service — manages product catalog and stock levels</li>
+    <li>Payment Service — processes payments and integrates with payment gateways</li>
+    <li>API Gateway — routes external traffic to the appropriate service</li>
+  </ul>
+
+  <h3>2. ECS Fargate Deployment</h3>
+  <p>Each microservice runs as its own ECS service:</p>
+  <ul>
+    <li>Docker images built and pushed to Amazon ECR</li>
+    <li>Task definitions with per-service resource allocation</li>
+    <li>Application Load Balancer with path-based routing</li>
+    <li>Auto-scaling based on CPU/memory utilization</li>
+  </ul>
+
+  <h3>3. Tailscale Private Networking</h3>
+  <p>Implemented Tailscale for secure service-to-service communication:</p>
+  <ul>
+    <li>Each ECS task runs a Tailscale sidecar container</li>
+    <li>Services communicate over the Tailscale mesh network using stable DNS names</li>
+    <li>No need to expose internal service ports via ALB or security groups</li>
+    <li>Encrypted WireGuard tunnels between all services</li>
+  </ul>
+
+  <h3>4. CI/CD Pipeline</h3>
+  <p>Automated the full build-to-deploy cycle:</p>
+  <ul>
+    <li>GitLab CI pipeline triggered on merge to main</li>
+    <li>Runs tests, builds Docker images, pushes to ECR</li>
+    <li>Updates ECS task definitions and forces new deployment</li>
+    <li>Runs database migrations as a one-off ECS task</li>
+  </ul>
+
+  <h2>Architecture Diagram</h2>
+  <MermaidDiagram diagram={diagrams.flowerstore} />
+
+  <h2>Results</h2>
+  <ul>
+    <li>Fully containerized microservice architecture on serverless compute</li>
+    <li>Secure inter-service communication without public endpoints</li>
+    <li>Independent scaling and deployment for each service</li>
+    <li>Automated CI/CD with zero-downtime deployments</li>
+    <li>Simplified networking with Tailscale — no complex VPC peering or service mesh required</li>
+  </ul>
+</ProjectLayout>

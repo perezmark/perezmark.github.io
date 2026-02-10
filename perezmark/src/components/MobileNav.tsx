@@ -2,22 +2,11 @@ import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
 
-interface MobileNavProps {
-  isProjectPage?: boolean;
-}
-
-const mainNavLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#projects", label: "Projects" },
-  { href: "#certifications", label: "Certifications" },
-  { href: "#contact", label: "Contact" },
-];
-
-const projectNavLinks = [
+const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/#projects", label: "Projects" },
+  { href: "/projects", label: "Projects" },
+  { href: "/certifications", label: "Certifications" },
+  { href: "/skills", label: "Skills" },
 ];
 
 const socialLinks = [
@@ -27,9 +16,8 @@ const socialLinks = [
   { href: "https://medium.com/@perezmark.tomcat", label: "Medium" },
 ];
 
-export default function MobileNav({ isProjectPage = false }: MobileNavProps) {
+export default function MobileNav() {
   const [open, setOpen] = useState(false);
-  const links = isProjectPage ? projectNavLinks : mainNavLinks;
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -43,7 +31,7 @@ export default function MobileNav({ isProjectPage = false }: MobileNavProps) {
 
       <SheetContent open={open} onClose={() => setOpen(false)} side="right">
         <nav className="flex flex-col gap-4 mt-8">
-          {links.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}

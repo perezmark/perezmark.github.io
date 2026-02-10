@@ -1,0 +1,73 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import MermaidDiagram from '../../components/astro/MermaidDiagram.astro';
+import { diagrams } from '../../data/diagrams';
+---
+
+<ProjectLayout title="Toast IO — EKS Cost Optimization - Mark Lester Perez" projectTitle="Toast IO — EKS Cost Optimization">
+  <h2>Project Overview</h2>
+  <p>
+    Led a cost optimization initiative for a large-scale EKS environment running 120+ Spring Boot
+    microservices. Through data-driven analysis of actual resource consumption, right-sized CPU and
+    memory requests/limits across the fleet, achieving 40-60% infrastructure cost savings without
+    impacting application performance.
+  </p>
+
+  <h2>Technologies Used</h2>
+  <ul>
+    <li>AWS EKS (Elastic Kubernetes Service)</li>
+    <li>Datadog for metrics and monitoring</li>
+    <li>Kubernetes HPA (Horizontal Pod Autoscaler)</li>
+    <li>Spring Boot microservices</li>
+    <li>Helm charts for deployment</li>
+    <li>Karpenter for node provisioning</li>
+  </ul>
+
+  <h2>The Challenge</h2>
+  <p>
+    The platform ran over 120 Spring Boot microservices on EKS, many of which had been provisioned
+    with generous resource requests based on initial estimates rather than actual usage data.
+    This led to significant over-provisioning — nodes were running at low utilization while
+    costs continued to climb.
+  </p>
+
+  <h2>Implementation Details</h2>
+
+  <h3>1. Metrics Collection & Analysis</h3>
+  <p>Established a baseline by collecting 2-4 weeks of resource usage data from Datadog:</p>
+  <ul>
+    <li>Captured P95 and P99 CPU and memory usage per microservice</li>
+    <li>Identified services with less than 20% resource utilization</li>
+    <li>Mapped peak usage patterns against request/limit configurations</li>
+    <li>Flagged services with memory limits far exceeding actual heap usage</li>
+  </ul>
+
+  <h3>2. Right-Sizing Resource Requests</h3>
+  <p>Adjusted Kubernetes resource requests based on actual consumption:</p>
+  <ul>
+    <li>Set CPU requests to P95 usage + 20% buffer</li>
+    <li>Set memory requests to P99 usage + 15% headroom</li>
+    <li>Removed artificially high limits that prevented efficient bin-packing</li>
+    <li>Updated Helm chart values across all microservice repositories</li>
+  </ul>
+
+  <h3>3. HPA Reconfiguration</h3>
+  <p>Tuned autoscaling to work with the new resource profiles:</p>
+  <ul>
+    <li>Adjusted HPA target utilization thresholds</li>
+    <li>Configured appropriate min/max replica counts per service tier</li>
+    <li>Validated scaling behavior under load testing</li>
+  </ul>
+
+  <h2>Architecture Diagram</h2>
+  <MermaidDiagram diagram={diagrams["toast-io"]} />
+
+  <h2>Results</h2>
+  <ul>
+    <li><strong>40-60% reduction</strong> in EKS compute costs</li>
+    <li>Significant decrease in node count through better bin-packing</li>
+    <li>Improved pod scheduling efficiency — fewer pending pods</li>
+    <li>Zero performance regressions across all 120+ services</li>
+    <li>Established a repeatable right-sizing review process for future services</li>
+  </ul>
+</ProjectLayout>
